@@ -13,13 +13,14 @@ with open(di, newline='') as csvfile:
         print("SMS TYPE: " + str(type(sms)))
 
         DailyAmt = int()
-
+        i = int(0)
+        
         while i <= 23:
             for sms_ in sms:
                 print(sms_)
                 if "," in sms_[2]:
                   x = sms_[2].split(",",1)
-                  m = str(x[0]+x[1])
+                  m = str(x[0]) + str(x[1])
                   DailyAmt = DailyAmt + int(m)
                     
                   i = i + 1
