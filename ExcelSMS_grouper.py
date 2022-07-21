@@ -20,12 +20,18 @@ with open(di, newline='') as csvfile:
         while i <= 23:
             for sms_ in sms:
                 print(sms_)
-                DailyAmt = DailyAmt + int(sms_[2])
-                i = i + 1
-            
+                if "," in sms_[2]:
+                  x = sms_[2].split(",",1)
+                  m = str(x[0]+x[1])
+                  DailyAmt = DailyAmt + int(m)
+                    
+                  i = i + 1
+                else:
+                  DailyAmt = DailyAmt + int(sms_[2])
+                  i = i + 1
                 if i >= 23:
                     with open(ou, 'a') as f:
-                        f.write("DATE: " + sms_[0] + ", Daily Amount: " + str(DailyAmt) + "\n")
+                        f.write(sms_[0] + ", "  + str(DailyAmt) + "\n")
                     f.close()
                     DailyAmt = 0
                     i = 0   
