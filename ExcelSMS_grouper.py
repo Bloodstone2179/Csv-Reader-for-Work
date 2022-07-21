@@ -13,10 +13,7 @@ with open(di, newline='') as csvfile:
         print("SMS TYPE: " + str(type(sms)))
 
         DailyAmt = int()
-        i = int(0)
-        if i >= 23:
-            i = 0
-            DailyAmt = 0
+
         while i <= 23:
             for sms_ in sms:
                 print(sms_)
@@ -29,7 +26,7 @@ with open(di, newline='') as csvfile:
                 else:
                   DailyAmt = DailyAmt + int(sms_[2])
                   i = i + 1
-                if i >= 23:
+                if i > 23:
                     with open(ou, 'a') as f:
                         f.write(sms_[0] + ", "  + str(DailyAmt) + "\n")
                     f.close()
